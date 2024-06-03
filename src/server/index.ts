@@ -61,6 +61,7 @@ app.get(
     const requestId = nanoid();
     return {
       onOpen(evt, ws) {
+        console.log("Opening connection");
         socketConnections[requestId] = ws;
         // Send the client the current count
         ws.send(JSON.stringify({ type: "count", count: tools.count }));
@@ -82,9 +83,9 @@ app.get(
 app.get("/test", (c) => c.json({ test: "test" }));
 
 if (import.meta.env.PROD) {
-  const port = Number(process.env["PORT"] || 8040);
+  const port = Number(process.env["PORT"] || 5173);
   Bun.serve({
-    port,
+    port: 5173,
     fetch: app.fetch,
     websocket: wsTools.websocket,
   });

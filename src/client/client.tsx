@@ -30,7 +30,7 @@ export const rep = new Replicache({
 // Open a websocket connection
 const openConnection = async () => {
   console.log("Opening websocket connection");
-  const ws = new WebSocket("ws://localhost:5173/ws");
+  const ws = new WebSocket("http://localhost:5173/ws");
   ws.onopen = () => {
     console.log("Connected to websocket");
   };
@@ -49,4 +49,4 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   </React.StrictMode>,
 );
 
-await openConnection();
+void openConnection();
